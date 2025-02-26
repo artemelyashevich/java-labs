@@ -9,6 +9,7 @@ import java.util.*;
 
 public class BookRepositoryImpl implements BookRepository {
 
+    public final static BookRepositoryImpl INSTANCE = new BookRepositoryImpl();
     private final List<Book> books = new ArrayList<Book>();
 
     {

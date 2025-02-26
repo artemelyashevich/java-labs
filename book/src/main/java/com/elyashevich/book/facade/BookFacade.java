@@ -24,9 +24,9 @@ public class BookFacade {
     private final BookController bookController;
 
     public BookFacade() {
-        this.bookRepository = new BookRepositoryImpl();
+        this.bookRepository = BookRepositoryImpl.INSTANCE;
         this.bookService = new BookServiceImpl(bookRepository);
-        this.bookValidator = new BookValidatorImpl();
+        this.bookValidator = BookValidatorImpl.INSTANCE;
         this.bookController = new BookController(bookService, bookValidator);
     }
 
