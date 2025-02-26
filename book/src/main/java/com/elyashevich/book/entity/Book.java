@@ -101,18 +101,6 @@ public class Book {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return id == book.id && pages == book.pages && Double.compare(price, book.price) == 0 && Objects.equals(title, book.title) && Objects.equals(authors, book.authors) && Objects.equals(publisher, book.publisher) && Objects.equals(publishedDate, book.publishedDate) && bindingType == book.bindingType;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, authors, publisher, publishedDate, pages, price, bindingType);
-    }
-
-    @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Book{");
         sb.append("id=").append(id);
@@ -125,5 +113,27 @@ public class Book {
         sb.append(", bindingType=").append(bindingType);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+        return Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(authors, book.authors) && Objects.equals(publisher, book.publisher) && Objects.equals(publishedDate, book.publishedDate) && Objects.equals(pages, book.pages) && Objects.equals(price, book.price) && bindingType == book.bindingType;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (authors != null ? authors.hashCode() : 0);
+        result = 31 * result + (publisher != null ? publisher.hashCode() : 0);
+        result = 31 * result + (publishedDate != null ? publishedDate.hashCode() : 0);
+        result = 31 * result + (pages != null ? pages.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (bindingType != null ? bindingType.hashCode() : 0);
+        return result;
     }
 }
