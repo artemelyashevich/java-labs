@@ -22,7 +22,7 @@ public class BookController {
         this.bookValidator = bookValidator;
     }
 
-    public void create(final Book book) {
+    public void create(final Book book) throws ValidationException {
         if (!this.bookValidator.isValid(book)) {
             logger.warn("Invalid book");
             throw new ValidationException("Invalid book");

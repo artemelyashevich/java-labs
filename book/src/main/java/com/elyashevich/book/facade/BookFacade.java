@@ -5,6 +5,7 @@ import com.elyashevich.book.create.BookRepository;
 import com.elyashevich.book.create.impl.BookRepositoryImpl;
 import com.elyashevich.book.entity.BindingType;
 import com.elyashevich.book.entity.Book;
+import com.elyashevich.book.exception.ValidationException;
 import com.elyashevich.book.service.BookService;
 import com.elyashevich.book.service.impl.BookServiceImpl;
 import com.elyashevich.book.validator.BookValidator;
@@ -65,7 +66,11 @@ public class BookFacade {
                     9.99 + i,
                     i % 2 == 0 ? BindingType.SOFT : BindingType.HARDCOVER
             );
-            this.bookController.create(book);
+            try {
+                this.bookController.create(book);
+            } catch (ValidationException e) {
+                logger.warn("Something went wrong", e);
+            }
         }
 
         logger.info("Books by author: ");
