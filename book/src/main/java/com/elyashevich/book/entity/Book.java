@@ -101,26 +101,20 @@ public class Book {
     }
 
     @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Book{");
-        sb.append("id=").append(id);
-        sb.append(", title='").append(title).append('\'');
-        sb.append(", authors=").append(authors);
-        sb.append(", publisher='").append(publisher).append('\'');
-        sb.append(", publishedDate=").append(publishedDate);
-        sb.append(", pages=").append(pages);
-        sb.append(", price=").append(price);
-        sb.append(", bindingType=").append(bindingType);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Book book = (Book) o;
-        return Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(authors, book.authors) && Objects.equals(publisher, book.publisher) && Objects.equals(publishedDate, book.publishedDate) && Objects.equals(pages, book.pages) && Objects.equals(price, book.price) && bindingType == book.bindingType;
+
+        if (id != null ? !id.equals(book.id) : book.id != null) return false;
+        if (title != null ? !title.equals(book.title) : book.title != null) return false;
+        if (authors != null ? !authors.equals(book.authors) : book.authors != null) return false;
+        if (publisher != null ? !publisher.equals(book.publisher) : book.publisher != null) return false;
+        if (publishedDate != null ? !publishedDate.equals(book.publishedDate) : book.publishedDate != null) return false;
+        if (pages != null ? !pages.equals(book.pages) : book.pages != null) return false;
+        if (price != null ? !price.equals(book.price) : book.price != null) return false;
+        return bindingType == book.bindingType;
     }
 
     @Override
@@ -135,5 +129,20 @@ public class Book {
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (bindingType != null ? bindingType.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Book{");
+        sb.append("id=").append(id);
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", authors=").append(authors);
+        sb.append(", publisher='").append(publisher).append('\'');
+        sb.append(", publishedDate=").append(publishedDate);
+        sb.append(", pages=").append(pages);
+        sb.append(", price=").append(price);
+        sb.append(", bindingType=").append(bindingType);
+        sb.append('}');
+        return sb.toString();
     }
 }
