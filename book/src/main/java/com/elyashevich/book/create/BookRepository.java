@@ -14,7 +14,7 @@ public interface BookRepository {
      *
      * @param book The book to be created.
      */
-    void createBook(final Book book);
+    void addBook(final Book book);
 
     /**
      * Finds all books in the repository.

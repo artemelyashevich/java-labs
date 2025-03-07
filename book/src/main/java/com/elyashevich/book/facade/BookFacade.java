@@ -3,6 +3,7 @@ package com.elyashevich.book.facade;
 import com.elyashevich.book.controller.BookController;
 import com.elyashevich.book.create.BookRepository;
 import com.elyashevich.book.create.impl.BookRepositoryImpl;
+import com.elyashevich.book.entity.BindingType;
 import com.elyashevich.book.entity.Book;
 import com.elyashevich.book.service.BookService;
 import com.elyashevich.book.service.impl.BookServiceImpl;
@@ -14,6 +15,8 @@ import org.apache.logging.log4j.Logger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BookFacade {
 
@@ -39,6 +42,32 @@ public class BookFacade {
                         LocalTime.of(5, 12)
                         )
         );
+        var authors1 = new HashSet<String>();
+        authors1.add("Author 1");
+        authors1.add("Co-Author 1");
+
+        var authors2 = new HashSet<String>();
+        authors2.add("Author 2");
+        authors2.add("Co-Author 2");
+
+        for (int i = 1; i <= 15; i++) {
+            Set<String> authors = new HashSet<>();
+            authors.add("Author " + i);
+            authors.add("Co-Author " + i);
+
+            Book book = new Book(
+                    i,
+                    "Title " + i,
+                    authors,
+                    "Publisher " + i,
+                    LocalDate.of(2022, i % 12 + 1, i % 28 + 1),
+                    100L + i * 10,
+                    9.99 + i,
+                    i % 2 == 0 ? BindingType.SOFT : BindingType.HARDCOVER
+            );
+            this.bookController.create(book);
+        }
+
         logger.info("Books by author: ");
         booksByAuthor.forEach(logger::info);
 

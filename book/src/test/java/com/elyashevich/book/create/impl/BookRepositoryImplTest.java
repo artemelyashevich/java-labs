@@ -34,18 +34,22 @@ public class BookRepositoryImplTest {
         authors.add("Co-Author 16");
 
         Book book = new Book(16, "Title 16", authors, "Publisher 16", LocalDate.of(2022, 1, 16), 260L, 25.99, BindingType.HARDCOVER);
-        bookRepository.createBook(book);
+        bookRepository.addBook(book);
 
         List<Book> books = bookRepository.findAll();
-        assertEquals(16, books.size());
-        assertTrue(books.contains(book));
+        assertAll(
+                () ->  assertEquals(16, books.size()),
+                () ->assertTrue(books.contains(book))
+        );
     }
 
     @Test
     public void testFindAllBooks() {
         List<Book> books = bookRepository.findAll();
-        assertNotNull(books);
-        assertEquals(15, books.size());
+        assertAll(
+                () ->   assertNotNull(books),
+                () -> assertEquals(15, books.size())
+        );
     }
 
     @Test
@@ -60,8 +64,11 @@ public class BookRepositoryImplTest {
         List<Book> books = bookRepository.findAll();
         Book book = books.get(0);
         Set<String> authors = book.getAuthors();
-        assertTrue(authors.contains("Author 1"));
-        assertTrue(authors.contains("Co-Author 1"));
+        assertAll(
+                ()->  assertTrue(authors.contains("Author 1")),
+                () -> assertTrue(authors.contains("Co-Author 1"))
+        )       ;
+
     }
 
     @Test

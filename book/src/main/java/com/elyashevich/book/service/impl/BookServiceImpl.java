@@ -59,7 +59,7 @@ public class BookServiceImpl implements BookService {
     public void create(final Book book) {
         logger.debug("Attempting to add Book '{}'", book);
 
-        this.bookRepository.createBook(book);
+        this.bookRepository.addBook(book);
 
         logger.info("Added Book '{}'", book);
     }
