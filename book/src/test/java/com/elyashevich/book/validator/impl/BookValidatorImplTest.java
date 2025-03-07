@@ -5,96 +5,158 @@ import com.elyashevich.book.entity.Book;
 import com.elyashevich.book.validator.BookValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 
-public class BookValidatorImplTest {
+class BookValidatorImplTest {
 
     private BookValidator validator;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
+        // Arrange
         validator = new BookValidatorImpl();
     }
 
     @Test
-    public void testValidBook() {
+    void testValidBook() {
+        // Arrange
         var authors = new HashSet<String>();
         authors.add("Author 1");
         var book = new Book(1, "Title", authors, "Publisher", LocalDate.of(2022, 1, 1), 300L, 29.99, BindingType.SOFT);
-        assertTrue(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertTrue(result);
     }
 
     @Test
-    public void testNullId() {
+    void testNullId() {
+        // Arrange
         var authors = new HashSet<String>();
         authors.add("Author 1");
         var book = new Book(null, "Title", authors, "Publisher", LocalDate.of(2022, 1, 1), 300L, 29.99, BindingType.SOFT);
-        assertFalse(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertFalse(result);
     }
 
     @Test
-    public void testEmptyTitle() {
+    void testEmptyTitle() {
+        // Arrange
         var authors = new HashSet<String>();
         authors.add("Author 1");
         var book = new Book(1, "", authors, "Publisher", LocalDate.of(2022, 1, 1), 300L, 29.99, BindingType.SOFT);
-        assertFalse(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertFalse(result);
     }
 
     @Test
-    public void testNullTitle() {
+    void testNullTitle() {
+        // Arrange
         var authors = new HashSet<String>();
         authors.add("Author 1");
         var book = new Book(1, null, authors, "Publisher", LocalDate.of(2022, 1, 1), 300L, 29.99, BindingType.SOFT);
-        assertFalse(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertFalse(result);
     }
 
     @Test
-    public void testEmptyAuthors() {
+    void testEmptyAuthors() {
+        // Arrange
         var authors = new HashSet<String>();
         var book = new Book(1, "Title", authors, "Publisher", LocalDate.of(2022, 1, 1), 300L, 29.99, BindingType.SOFT);
-        assertFalse(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertFalse(result);
     }
 
     @Test
-    public void testNullPublisher() {
+    void testNullPublisher() {
+        // Arrange
         var authors = new HashSet<String>();
         authors.add("Author 1");
         var book = new Book(1, "Title", authors, null, LocalDate.of(2022, 1, 1), 300L, 29.99, BindingType.SOFT);
-        assertFalse(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertFalse(result);
     }
 
     @Test
-    public void testEmptyPublisher() {
+    void testEmptyPublisher() {
+        // Arrange
         var authors = new HashSet<String>();
         authors.add("Author 1");
         var book = new Book(1, "Title", authors, "", LocalDate.of(2022, 1, 1), 300L, 29.99, BindingType.SOFT);
-        assertFalse(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertFalse(result);
     }
 
     @Test
-    public void testNullPublishedDate() {
+    void testNullPublishedDate() {
+        // Arrange
         var authors = new HashSet<String>();
         authors.add("Author 1");
         var book = new Book(1, "Title", authors, "Publisher", null, 300L, 29.99, BindingType.SOFT);
-        assertFalse(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertFalse(result);
     }
 
     @Test
-    public void testFuturePublishedDate() {
+    void testFuturePublishedDate() {
+        // Arrange
         var authors = new HashSet<String>();
         authors.add("Author 1");
         var book = new Book(1, "Title", authors, "Publisher", LocalDate.of(2023, 1, 1), 300L, 29.99, BindingType.SOFT);
-        assertTrue(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertTrue(result);
     }
 
     @Test
-    public void testNullBindingType() {
+    void testNullBindingType() {
+        // Arrange
         var authors = new HashSet<String>();
         authors.add("Author 1");
         var book = new Book(1, "Title", authors, "Publisher", LocalDate.of(2022, 1, 1), 300L, 29.99, null);
-        assertFalse(validator.isValid(book));
+
+        // Act
+        boolean result = validator.isValid(book);
+
+        // Assert
+        assertFalse(result);
     }
 }

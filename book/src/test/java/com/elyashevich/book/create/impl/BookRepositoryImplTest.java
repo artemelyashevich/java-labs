@@ -12,97 +12,150 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-public class BookRepositoryImplTest {
+class BookRepositoryImplTest {
 
     private BookRepositoryImpl bookRepository;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
+        // Arrange
         bookRepository = new BookRepositoryImpl();
     }
 
     @Test
-    public void testInitialBooksCount() {
-        List<Book> books = bookRepository.findAll();
-        assertEquals(15, books.size());
+    void testInitialBooksCount() {
+        // Arrange
+        var books = bookRepository.findAll();
+
+        // Act
+        var bookCount = books.size();
+
+        // Assert
+        assertEquals(15, bookCount);
     }
 
     @Test
-    public void testCreateBook() {
-        Set<String> authors = new HashSet<>();
+    void testCreateBook() {
+        // Arrange
+        var authors = new HashSet<String>();
         authors.add("Author 16");
         authors.add("Co-Author 16");
 
-        Book book = new Book(16, "Title 16", authors, "Publisher 16", LocalDate.of(2022, 1, 16), 260L, 25.99, BindingType.HARDCOVER);
-        bookRepository.addBook(book);
+        var book = new Book(16, "Title 16", authors, "Publisher 16", LocalDate.of(2022, 1, 16), 260L, 25.99, BindingType.HARDCOVER);
 
-        List<Book> books = bookRepository.findAll();
+        // Act
+        bookRepository.addBook(book);
+        var books = bookRepository.findAll();
+
+        // Assert
         assertAll(
-                () ->  assertEquals(16, books.size()),
-                () ->assertTrue(books.contains(book))
+                () -> assertEquals(16, books.size()),
+                () -> assertTrue(books.contains(book))
         );
     }
 
     @Test
-    public void testFindAllBooks() {
-        List<Book> books = bookRepository.findAll();
+    void testFindAllBooks() {
+        // Arrange
+        var books = bookRepository.findAll();
+
+        // Act & Assert
         assertAll(
-                () ->   assertNotNull(books),
+                () -> assertNotNull(books),
                 () -> assertEquals(15, books.size())
         );
     }
 
     @Test
-    public void testFindBookById() {
-        List<Book> books = bookRepository.findAll();
-        Book book = books.get(0);
+    void testFindBookById() {
+        // Arrange
+        var books = bookRepository.findAll();
+
+        // Act
+        var book = books.get(0);
+
+        // Assert
         assertEquals(1, book.getId());
     }
 
     @Test
-    public void testBookAuthors() {
-        List<Book> books = bookRepository.findAll();
-        Book book = books.get(0);
-        Set<String> authors = book.getAuthors();
+    void testBookAuthors() {
+        // Arrange
+        var books = bookRepository.findAll();
+        var book = books.get(0);
+
+        // Act
+        var authors = book.getAuthors();
+
+        // Assert
         assertAll(
-                ()->  assertTrue(authors.contains("Author 1")),
+                () -> assertTrue(authors.contains("Author 1")),
                 () -> assertTrue(authors.contains("Co-Author 1"))
-        )       ;
-
+        );
     }
 
     @Test
-    public void testBookPublisher() {
-        List<Book> books = bookRepository.findAll();
-        Book book = books.get(0);
-        assertEquals("Publisher 1", book.getPublisher());
+    void testBookPublisher() {
+        // Arrange
+        var books = bookRepository.findAll();
+        var book = books.get(0);
+
+        // Act
+        var publisher = book.getPublisher();
+
+        // Assert
+        assertEquals("Publisher 1", publisher);
     }
 
     @Test
-    public void testBookPublishedDate() {
-        List<Book> books = bookRepository.findAll();
-        Book book = books.get(0);
-        assertEquals(LocalDate.of(2022, 2, 2), book.getPublishedDate());
+    void testBookPublishedDate() {
+        // Arrange
+        var books = bookRepository.findAll();
+        var book = books.get(0);
+
+        // Act
+        var publishedDate = book.getPublishedDate();
+
+        // Assert
+        assertEquals(LocalDate.of(2022, 2, 2), publishedDate);
     }
 
     @Test
-    public void testBookPages() {
-        List<Book> books = bookRepository.findAll();
-        Book book = books.get(0);
-        assertEquals(110L, book.getPages());
+    void testBookPages() {
+        // Arrange
+        var books = bookRepository.findAll();
+        var book = books.get(0);
+
+        // Act
+        var pages = book.getPages();
+
+        // Assert
+        assertEquals(110L, pages);
     }
 
     @Test
-    public void testBookPrice() {
-        List<Book> books = bookRepository.findAll();
-        Book book = books.get(0);
-        assertEquals(10.99, book.getPrice());
+    void testBookPrice() {
+        // Arrange
+        var books = bookRepository.findAll();
+        var book = books.get(0);
+
+        // Act
+        var price = book.getPrice();
+
+        // Assert
+        assertEquals(10.99, price);
     }
 
     @Test
-    public void testBookBindingType() {
-        List<Book> books = bookRepository.findAll();
-        Book book = books.get(0);
-        assertEquals(BindingType.HARDCOVER, book.getBindingType());
+    void testBookBindingType() {
+        // Arrange
+        var books = bookRepository.findAll();
+        var book = books.get(0);
+
+        // Act
+        var bindingType = book.getBindingType();
+
+        // Assert
+        assertEquals(BindingType.HARDCOVER, bindingType);
     }
 }
