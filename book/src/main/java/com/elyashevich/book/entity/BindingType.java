@@ -8,12 +8,12 @@ public enum BindingType {
     /**
      * Represents a soft binding type.
      */
-    SOFT("SOFT"),
+    SOFT("Soft"),
 
     /**
      * Represents a hardcover binding type.
      */
-    HARDCOVER("HARDCOVER");
+    HARDCOVER("Hardcover");
 
     /**
      * Constructor for BindingType enum.
