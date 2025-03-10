@@ -2,7 +2,6 @@ package com.elyashevich.book.entity;
 
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 public class Book {
@@ -107,13 +106,13 @@ public class Book {
 
         Book book = (Book) o;
 
-        if (id != null ? !id.equals(book.id) : book.id != null) return false;
-        if (title != null ? !title.equals(book.title) : book.title != null) return false;
-        if (authors != null ? !authors.equals(book.authors) : book.authors != null) return false;
-        if (publisher != null ? !publisher.equals(book.publisher) : book.publisher != null) return false;
-        if (publishedDate != null ? !publishedDate.equals(book.publishedDate) : book.publishedDate != null) return false;
-        if (pages != null ? !pages.equals(book.pages) : book.pages != null) return false;
-        if (price != null ? !price.equals(book.price) : book.price != null) return false;
+        if (id != null ? !id.equals(book.getId()) : book.getId() != null) return false;
+        if (title != null ? !title.equals(book.getTitle()) : book.getTitle() != null) return false;
+        if (authors != null ? !authors.equals(book.getAuthors()) : book.getAuthors() != null) return false;
+        if (publisher != null ? !publisher.equals(book.getPublisher()) : book.getPublisher() != null) return false;
+        if (publishedDate != null ? !publishedDate.equals(book.getPublishedDate()) : book.getPublishedDate() != null) return false;
+        if (pages != null ? !pages.equals(book.getPages()) : book.getPages() != null) return false;
+        if (price != null ? !price.equals(book.getPrice()) : book.getPrice() != null) return false;
         return bindingType == book.bindingType;
     }
 

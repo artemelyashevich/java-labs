@@ -1,4 +1,4 @@
-package com.elyashevich.book.create;
+package com.elyashevich.book.repository;
 
 import com.elyashevich.book.entity.Book;
 

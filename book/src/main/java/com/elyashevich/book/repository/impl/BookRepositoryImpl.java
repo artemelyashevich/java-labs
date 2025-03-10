@@ -1,16 +1,14 @@
-package com.elyashevich.book.create.impl;
+package com.elyashevich.book.repository.impl;
 
-import com.elyashevich.book.create.BookRepository;
-import com.elyashevich.book.entity.BindingType;
+import com.elyashevich.book.repository.BookRepository;
 import com.elyashevich.book.entity.Book;
 
-import java.time.LocalDate;
 import java.util.*;
 
 public class BookRepositoryImpl implements BookRepository {
 
     public final static BookRepositoryImpl INSTANCE = new BookRepositoryImpl();
-    private final List<Book> books = new ArrayList<Book>();
+    private final List<Book> books = new ArrayList<>();
 
     @Override
     public void addBook(final Book book) {

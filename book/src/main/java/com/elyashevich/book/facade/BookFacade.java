@@ -1,8 +1,8 @@
 package com.elyashevich.book.facade;
 
 import com.elyashevich.book.controller.BookController;
-import com.elyashevich.book.create.BookRepository;
-import com.elyashevich.book.create.impl.BookRepositoryImpl;
+import com.elyashevich.book.repository.BookRepository;
+import com.elyashevich.book.repository.impl.BookRepositoryImpl;
 import com.elyashevich.book.entity.BindingType;
 import com.elyashevich.book.entity.Book;
 import com.elyashevich.book.exception.ValidationException;

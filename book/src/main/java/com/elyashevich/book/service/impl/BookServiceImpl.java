@@ -1,6 +1,6 @@
 package com.elyashevich.book.service.impl;
 
-import com.elyashevich.book.create.BookRepository;
+import com.elyashevich.book.repository.BookRepository;
 import com.elyashevich.book.entity.Book;
 import com.elyashevich.book.service.BookService;
 import org.apache.logging.log4j.LogManager;
